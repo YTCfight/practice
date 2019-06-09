@@ -1,0 +1,460 @@
+//.编程实现： 
+//两个int（32位）整数m和n的二进制表达中，有多少个位(bit)不同？
+//输入例子 :
+//1999 2299
+//输出例子 : 7
+//方法一
+//int differentbit(int m, int n)
+//{
+//	int i = 0;
+//	int count = 0;
+//	for (i = 0; i < 32;i++)
+//	{
+//		if ((m >> i & 1) != (n >> i & 1))
+//		{
+//			count++;
+//		}
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int m = 0;
+//	int n = 0;
+//	int ret = 0;
+//	scanf("%d%d", &m, &n);
+//	ret=differentbit(m, n);
+//	printf("%d\n", ret);
+//	system("pause");
+//	return 0;
+//}
+//方法二
+//int differentbit(int m, int n)
+//{
+//	int count = 0;
+//	int i = 0;
+//	for (i = 0; i < 32; i++)
+//	{
+//		if ((m >> i)^(n >> i) == 1)
+//		{
+//			count++;
+//		}
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int m= 0;
+//	int n = 0;
+//	int ret = 0;
+//	scanf("%d%d", &m, &n);
+//	ret = differentbit(m, n);
+//	printf("%d\n", ret);
+//	system("pause");
+//	return 0;
+//}
+//5位运动员参加了10米台跳水比赛，有人让他们预测比赛结果
+//A选手说：B第二，我第三；
+//B选手说：我第二，E第四；
+//C选手说：我第一，D第二；
+//D选手说：C最后，我第三；
+//E选手说：我第四，A第一；
+//比赛结束后，每位选手都说对了一半，请编程确定比赛的名次。
+//int main()
+//{
+//	int a = 0, b = 0, c = 0, d = 0, e = 0;
+//	for (a = 1; a <= 5; a++)
+//	{
+//		for (b = 1; b <= 5; b++)
+//		{
+//			for (c = 1; c <= 5; c++)
+//			{
+//				for (d = 1; d <= 5; d++)
+//				{
+//					for (e = 1; e <= 5; e++)
+//					{
+//						if ((b == 2) + (a == 3) == 1 && ((b == 2) + (e == 4) == 1) && ((c == 1) + (d == 2) == 1) && ((c == 5) + (d == 3) == 1) && ((e == 4) + (a == 1) == 1 && (a*b*c*d*e == 120)))
+//						{
+//							printf("a=%d,b=%d,c=%d,d=%d,e=%d\n", a, b, c, d, e);
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	system("pause");
+//	return 0;
+//}
+/*日本某地发生了一件谋杀案，警察通过排查确定杀人凶手必为4个。
+嫌疑犯的一个。以下为4个嫌疑犯的供词。
+A说：不是我。
+B说：是C。
+C说：是D。
+D说：C在胡说
+已知3个人说了真话，1个人说的是假话。
+现在请根据这些信息，写一个程序来确定到底谁是凶手。*/
+//int main()
+//{
+//	char killer = 'a';
+//	for (killer = 'a'; killer <= 'd'; killer++)
+//	{
+//		if ((killer != 'a') +( killer == 'c') +( killer == 'd' )+ (killer != 'd') == 3)
+//		{
+//			printf("killer is %c\n", killer);
+//		}
+//	}
+//	system("pause");
+//	return 0;
+//}
+//.在屏幕上打印杨辉三角。
+//1
+//1 1
+//1 2 1
+//1 3 3 1
+//1 4 6 4 1
+//#define ROW 5
+//#define COL 5
+//void yangAngel(int arr[][COL], int row, int col)
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < row; i++)
+//	{
+//		for (j = 0; j <=i; j++)
+//		{
+//			if (j == 0 || i == j)
+//			{
+//				arr[i][j] = 1;
+//			}
+//			else
+//			{
+//				arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];
+//			}
+//		}
+//	}
+//}
+//void Print(int arr[][COL], int row, int col)
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < row; i++)
+//	{
+//		for (j = 0; j<= i; j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int arr[ROW][COL] = { 0 };
+//	yangAngel(arr, ROW, COL);
+//	Print(arr, ROW, COL);
+//	system("pause");
+//	return 0;
+//}
+//.编写函数：
+//unsigned int reverse_bit(unsigned int value);
+//这个函数的返回值是value的二进制位模式从左到右翻转后的值。
+//unsigned int reverse_bit(unsigned int input)
+//{
+//	unsigned int ret = 0;
+//	int i = 0;
+//	while (input)
+//	{
+//		ret+=((input & 1)*pow(2, 31 - i));
+//		i++;
+//		input = input >> 1;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	unsigned int input = 0;
+//	unsigned int ret = 0;
+//	scanf("%u", &input);
+//	ret = reverse_bit(input);
+//	printf("%u\n", ret);
+//	system("pause");
+//	return 0;
+//}
+//不使用（a + b） / 2这种方式，求两个数的平均值。
+//方法一
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int average = 0;
+//	scanf("%d%d", &a, &b);
+//	average = a + (b-a) / 2;
+//	printf("%d\n", average);
+//	system("pause");
+//	return 0;
+//}
+//方法二
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int average = 0;
+//	scanf("%d%d", &a, &b);
+//	average = (a&b) + (a^b) / 2;
+//	printf("%d\n", average);
+//	system("pause");
+//	return 0;
+//}
+//编程实现：
+//一组数据中只有一个数字出现了一次。
+//其他所有数字都是成对出现的。
+//请找出这个数字。（使用位运算）
+//int Seek(int arr[], int len)
+//{
+//	int ret = 0;
+//	int i = 0;
+//	for (i = 0; i < len; i++)
+//	{
+//		ret ^= arr[i];
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	int arr[] = { 1, 1, 2, 2, 3, 3, 6 };
+//	int ret = 0;
+//	int len = sizeof(arr) / sizeof(arr[0]);
+//	ret=Seek(arr,len);
+//	printf("%d\n", ret);
+//	system("pause");
+//	return 0;
+//}
+//编程实现：
+//一组数据中只有两个数字出现了一次。
+//其他所有数字都是成对出现的。
+//请找出这两个数字。（使用位运算）
+//void Seek(int arr[], int len)
+//{
+//	int i = 0;
+//	int ret = 0;
+//	int sum = 0;
+//	int input = 0;
+//	for (i = 0; i < len; i++)
+//	{
+//		ret ^= arr[i];
+//	}
+//	while (1)
+//	{
+//		if ((ret >> i) & 1 == 1)
+//		{
+//			ret = i;
+//			break;
+//		}
+//		i++;
+//	}
+//	for (i = 0; i < len; i++)
+//	{
+//		if ((arr[i]>>ret)&1==1)
+//		{
+//			sum ^= arr[i];
+//		}
+//		else
+//		{
+//			input ^= arr[i];
+//		}
+//	}
+//	printf("%d %d\n", sum, input);
+//}
+//int main()
+//{
+//	int arr[] = { 1, 1, 2, 2, 3, 3, 4, 5 };
+//	int len = sizeof(arr) / sizeof(arr[0]);
+//	Seek(arr, len);
+//	system("pause");
+//	return 0;
+//}
+//有一个字符数组的内容为:"student a am i",
+//	请你将数组的内容改为"i am a student".
+//要求：
+//不能使用库函数。
+//只能开辟有限个空间（空间个数和字符串的长度无关）。
+//int Mystrlen(char arr[])
+//{
+//	int count = 0;
+//	while (*arr != '\0')
+//	{
+//		count++;
+//		arr++;
+//	}
+//	return count;
+//}
+//void Change(char arr[],int len)
+//{
+//	int left = 0;
+//	int right = len - 1;
+//	char ret = 0;
+//	while (left < right)
+//	{
+//		ret = arr[left];
+//		arr[left] = arr[right];
+//		arr[right] = ret;
+//		left++;
+//		right--;
+//	}
+//}void reverse(char arr[], int len)
+//{
+//	char cur;
+//	char *star = cur;
+//	while (*star != '\0')
+//	{
+//
+//	}
+//}
+//
+//int main()
+//{
+//	char arr[] = "student a am i";
+//	int len = 0;
+//	len =Mystrlen(arr);
+//	Change(arr,len);
+//	reverse(arr, len);
+//	printf("%s\n", arr);
+//	system("pause");
+//	return 0;
+//}
+//老师的方法
+//int MyStrlen(const char *str)
+//{
+//	int count = 0;
+//	assert(str != NULL);
+//	while (*str != '\0')
+//	{
+//		count++;
+//		str++;
+//	}
+//	return count;
+//}
+//void reverse(char *left, char *right)
+//{
+//	while (left < right)
+//	{
+//		char tmp = *left;
+//		*left = *right;
+//		*right = tmp;
+//		left++;
+//		right--;
+//	}
+//}
+//
+//void reverseStr(char *str)
+//{
+//	char *left = str;
+//	char*right = str + MyStrlen(str) - 1;
+//	reverse(left, right);
+//	//tneduts a ma i
+//	char *cur = str;
+//	while (*cur != '\0')
+//	{
+//		//每个单词的开始
+//		char *start = cur;
+//		//cur走到空格或者\0
+//		while (*cur != ' ' &&  *cur != '\0')
+//		{
+//			cur++;
+//		}
+//		reverse(start, cur-1);
+//		if (*cur != '\0')
+//		{
+//			cur++;
+//		}
+//	}
+//}
+//int main()
+//{
+//	char str[] = "student a am i";
+//	reverseStr(str);
+//	printf("%s\n", str);
+//	system("pause");
+//	return 0;
+//}
+//调整数组使奇数全部都位于偶数前面。
+//
+//题目：
+//输入一个整数数组，实现一个函数，
+//来调整该数组中数字的顺序使得数组中所有的奇数位于数组的前半部分，
+//所有偶数位于数组的后半部分。
+//void change(int arr[], int len)
+//{
+//	int i = 0;
+//	printf("奇数为：\n");
+//	for (i = 0; i < len; i++)
+//	{
+//		if (arr[i] % 2 == 1)
+//		{
+//			printf("%d ", arr[i]);
+//		}
+//	}
+//	printf("\n");
+//	printf("偶数为:\n");
+//	for (i = 0; i < len; i++)
+//	{
+//		if (arr[i] % 2 == 0)
+//		{
+//			printf("%d ", arr[i]);
+//		}
+//	}
+//	printf("\n");
+//}
+//int main()
+//{
+//	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int len = sizeof(arr) / sizeof(arr[0]);
+//	change(arr, len);
+//	system("pause");
+//	return 0;
+//}
+////杨氏矩阵 
+//有一个二维数组.
+//数组的每行从左到右是递增的，每列从上到下是递增的.
+//在这样的数组中查找一个数字是否存在。
+//时间复杂度小于O(N);
+//#define ROW 3
+//#define COL 3
+//int Seek(int arr[][COL], int row, int col,int input)
+//{
+//	int left = 0;
+//	int right = col-1;
+//	while (left >= 0 && left < row && right >= 0 && right < col)
+//	{
+//		if (input>arr[left][right])
+//		{
+//			left++;
+//		}
+//		else if (input<arr[left][right])
+//		{
+//			right--;
+//		}
+//		else
+//		{
+//			return 1;
+//		}
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int arr[ROW][COL] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+//	int ret = 0;
+//	int input = 0;
+//	scanf("%d", &input);
+//	ret=Seek(arr, ROW, COL,input);
+//	if (ret == 1)
+//	{
+//		printf("找到了\n");
+//	}
+//	else
+//	{
+//		printf("没找到\n");
+//	}
+//	system("pause");
+//	return 0;
+//}
