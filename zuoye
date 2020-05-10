@@ -271,6 +271,64 @@
 //	system("pause");
 //	return 0;
 //}
+打印菱形(注意输入的 n 必须是奇数)
+    *    
+   ***   
+  *****  
+ ******* 
+*********
+ ******* 
+  *****  
+   ***   
+    *    
+public class Test6 {
+    public static void main(String[] args) throws InterruptedException {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            int n = sc.nextInt();
+            help(n);
+        }
+    }
+
+    private static void help(int n) throws InterruptedException {
+        int left = n / 2;
+        int right = n / 2;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (j >= left && j <= right) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+            Thread.sleep(1000);
+            left--;
+            right++;
+            if (left <= -1) {
+                break;
+            }
+        }
+        left += 2;
+        right -= 2;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (j >= left && j <= right) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+            Thread.sleep(1000);
+            left++;
+            right--;
+            if (left > right) {
+                break;
+            }
+        }
+    }
+}
 //求出0到999之间的水仙花数，并输出
 //方法一
 //int main()
